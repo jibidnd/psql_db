@@ -40,19 +40,19 @@ class db():
 
 
 	def get_trmi(self, table_name, asset=None , start_date='2005-01-01', end_date=datetime.datetime.today()):
-	    '''returns a pandas Dataframe of the table specified. 
-	        uses "Date" as index, if present'''
-	    date_range='WHERE "Date">= \'' + start_date + '\' and "Date"<= \'' + str(end_date) + '\''
-	    try: 
-	        ass_='and "Asset"=\'' + asset + '\''
-	    except:
-	        ass_=''
-	    tbl=pd.read_sql('SELECT * FROM %s %s %s' %(table_name, date_range, ass_), self.engine )
-	    try:
-	    	tbl.index=tbl.windowTimestamp
-	    except: 
-	    	pass
-	    return tbl
+		'''returns a pandas Dataframe of the table specified. 
+			uses "Date" as index, if present'''
+		date_range='WHERE "Date">= \'' + start_date + '\' and "Date"<= \'' + str(end_date) + '\''
+		try: 
+		ass_='and "Asset"=\'' + asset + '\''
+		except:
+		ass_=''
+		tbl=pd.read_sql('SELECT * FROM %s %s %s' %(table_name, date_range, ass_), self.engine )
+		try:
+		    tbl.index=tbl.windowTimestamp
+		except: 
+		    pass
+		return tbl
 
 	def get_table(self, table_name):
 		'''
