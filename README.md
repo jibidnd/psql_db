@@ -1,5 +1,5 @@
 # psql_db
-Quick pull of data from a psql database onto python as a pandas dataframe
+If you don't want to deal with accessing the database/querying and would rather just download the whole table and work locally, this module is for you!
 
 The psql_db module contains the following objects:
 
